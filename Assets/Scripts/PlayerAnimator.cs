@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Animator animator;
+    [SerializeField] GameObject attackCollsion;
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Move(float DKV)
     {
-        
+        animator.SetFloat("DirectKeyValue", DKV);
     }
+    public void Attack()
+    {
+        animator.SetTrigger("onAttack");
+    }
+    public void ActiveAttackCollision()
+    {
+        attackCollsion.SetActive(true);
+    }    
+
 }
