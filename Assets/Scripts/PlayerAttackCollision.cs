@@ -33,7 +33,8 @@ public class PlayerAttackCollision : MonoBehaviour
     {
         if(other.CompareTag("Enemy"))
         {
-            Debug.Log("몬스터공격");
+            Unit unit = other.GetComponent<Unit>();
+            unit.TakeDamage();
         }
     }
 

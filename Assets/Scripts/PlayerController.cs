@@ -6,7 +6,14 @@ using UnityEngine.Scripting.APIUpdating;
 public class PlayerController : Unit
 {
     [SerializeField] PlayerAnimator playerAnimator;
+    public static PlayerController instance;
+    public List<float> List_expLimt;
+    public float playerEXP;
 
+    private void Awake()
+    {
+        instance = this;    
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -48,5 +55,16 @@ public class PlayerController : Unit
     public override void TakeDamage()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void TakeEXP(float monsterEXP)
+    {
+        playerEXP += monsterEXP;
+
+        if(playerEXP >= List_expLimt[unitLV-1])
+        {
+            playerEXP -= List_expLimt[unitLV - 1];
+            unitLV++;
+        }
     }
 }
